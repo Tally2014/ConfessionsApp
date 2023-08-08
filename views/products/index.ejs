@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confessions</title>
+</head>
+<body>
+    <h1>Annonymous Confessions</h1>
+    <div>
+        <a href="/conf/new">New View</a>
+        <a href="/conf/edit">Edit View</a>
+        <a href="/conf/preview">Preview View</a>
+    </div>
+    <ul>
+        <% for(let confession of confessions) {%>
+            <li>    
+                <a href=""><%= confession.postTitle %></a>            
+            </li>
+        <% } %>
+    </ul>
+</body>
+</html>

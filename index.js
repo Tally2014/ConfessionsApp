@@ -15,9 +15,24 @@ async function main(){
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
-app.get('/conf', (req, res) => {
-    res.send('Confesssing Right Now!!')
+app.get('/conf', async (req, res) => {
+    const confessions = await Confession.find({});
+    res.render('products/index', {confessions})
 });
+
+app.get('/conf/new', (req, res) => {
+    res.render('products/new')
+});
+
+
+app.get('/conf/preview', (req, res) => {
+    res.render('products/preview')
+});
+
+app.get('/conf/edit', (req, res) => {
+    res.render('products/edit')
+});
+
 
 app.listen(3000, ()=>{
     console.log("APP IS LISTENING ON PORT 3000!");
