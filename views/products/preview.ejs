@@ -6,7 +6,26 @@
     <title>View Confession</title>
 </head>
 <body>
-    <h1>Preview Confession Page</h1>
-    <a href="/conf">Back</a>
+    <div class="card">
+        <div class="qoute">
+            <button>Back</button>
+            <div class="header">
+                <a href=""><%= confession.postHash %></a>
+                <div class="userProfile">
+                    <h3><li><%= confession.user %></li></h3>
+                </div>
+            </div>
+            <h1><%= confession.postTitle %></h1>
+            <div class="scroll-container">
+                <%= confession.postConfession %>
+            </div>
+            <div class="socials-container">
+                <a href=""><%= confession.postLikes %> Likes</a>
+                <a href=""><%= confession.postComments %> Comments</a>
+                <a href="/conf">Back</a>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

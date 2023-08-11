@@ -25,8 +25,10 @@ app.get('/conf/new', (req, res) => {
 });
 
 
-app.get('/conf/preview', (req, res) => {
-    res.render('products/preview')
+app.get('/conf/:id', async (req, res) => {
+    const { id } = req.params;
+    const confession = await Confession.findById(id);
+    res.render('products/preview', { confession })
 });
 
 app.get('/conf/edit', (req, res) => {
