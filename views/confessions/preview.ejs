@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Confession</title>
-    <link rel="stylesheet" href="app.css">
 </head>
 <body>
     <div class="card">
         <div class="qoute">
-            <button>Back</button>
+            <form action="/confessions">
+                <button>Back</button>
+            </form>
+            
             <div class="header">
                 <a href=""><%= confession.postHash %></a>
                 <div class="userProfile">
@@ -23,7 +25,7 @@
             <div class="socials-container">
                 <a href=""><%= confession.postLikes %> Likes</a>
                 <a href=""><%= confession.postComments %> Comments</a>
-                <a href="/conf">Back</a>
+                <a href="/confessions/<%=confession._id%>/edit">Edit</a>
             </div>
         </div>
     </div>

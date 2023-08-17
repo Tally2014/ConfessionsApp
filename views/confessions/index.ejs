@@ -8,14 +8,12 @@
 <body>
     <h1>Annonymous Confessions</h1>
     <div>
-        <a href="/conf/new">New View</a>
-        <a href="/conf/edit">Edit View</a>
-        <a href="/conf/preview">Preview View</a>
+        <a href="/confessions/new">New Confession</a>
     </div>
     <ul>
         <% for(let confession of confessions) {%>
             <li>    
-                <a href="/conf/<%=confession._id%>"><%= confession.postTitle %></a>            
+                <a href="/confessions/<%=confession._id%>"><%= confession.postTitle %></a>            
             </li>
         <% } %>
     </ul>

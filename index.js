@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const Confession = require('./models/confession');
+const methodOverride = require('method-override');
 
 main().catch(err => console.log(err));
 
@@ -12,27 +13,39 @@ async function main(){
 }
 
 
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 
-app.get('/conf', async (req, res) => {
+app.get('/confessions', async (req, res) => {
     const confessions = await Confession.find({});
-    res.render('products/index', {confessions})
+    res.render('confessions/index', {confessions});
 });
 
-app.get('/conf/new', (req, res) => {
-    res.render('products/new')
+app.get('/confessions/new', (req, res) => {
+    res.render('confessions/new');
 });
 
 
-app.get('/conf/:id', async (req, res) => {
+app.get('/confessions/:id', async (req, res) => {
     const { id } = req.params;
     const confession = await Confession.findById(id);
-    res.render('products/preview', { confession })
+    res.render('confessions/preview', { confession });
 });
 
-app.get('/conf/edit', (req, res) => {
-    res.render('products/edit')
+app.get('/confessions/:id/edit', async (req, res) => {
+    const confession = await Confession.findById(req.params.id)
+    res.render('confessions/edit', { confession });
+});
+
+app.put('/confessions/:id', async (req, res) => {
+    const { id } = req.params;
+    console.log(req.body.confy);
+    const confession = await Confession.findByIdAndUpdate(id, { ...req.body.confy });
+    res.redirect(`/confessions/${confession._id}`);
 });
 
 
