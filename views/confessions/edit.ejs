@@ -9,12 +9,12 @@
     <h1>Edit Confession Page</h1>
     <form action="/confessions/<%=confession._id%>?_method=PUT" method="POST">
         <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="confy[title]" value="<%=confession.postTitle %>">
+            <label for="postTitle">Title</label>
+            <input type="text" id="postTitle" name="confy[postTitle]" value="<%=confession.postTitle %>">
         </div>
         <div>
-            <label for="location">Location</label>
-            <input type="text" id="location" name="confy[location]" value="<%= confession.postConfession %>">
+            <label for="postConfession">Location</label>
+            <input type="text" id="postConfession" name="confy[postConfession]" value="<%= confession.postConfession %>">
         </div>
         <button>Update Confession</button>
     </form>

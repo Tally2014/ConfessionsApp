@@ -44,7 +44,7 @@ app.get('/confessions/:id/edit', async (req, res) => {
 app.put('/confessions/:id', async (req, res) => {
     const { id } = req.params;
     console.log(req.body.confy);
-    const confession = await Confession.findByIdAndUpdate(id, { ...req.body.confy });
+    const confession = await Confession.findByIdAndUpdate(id, { ...req.body.confy});
     res.redirect(`/confessions/${confession._id}`);
 });
 
