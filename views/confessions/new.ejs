@@ -6,7 +6,17 @@
     <title>Create new Confession</title>
 </head>
 <body>
-    <h1>Create New Confession Page</h1>
+    <form action="/confessions" method="POST">
+        <div>
+            <label for="postTitle">Title</label>
+            <input type="text" id="postTitle" name="postTitle">
+        </div>
+        <div>
+            <label for="postConfession">Confession</label>
+            <input type="text" id="postConfession" name="postConfession">
+        </div>
+        <button>Add Confession</button>
+    </form>
     <a href="/confessions">Back</a>
 </body>
 </html>

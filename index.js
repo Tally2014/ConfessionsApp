@@ -14,6 +14,7 @@ async function main(){
 
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(methodOverride('_method'));
 
 
@@ -28,6 +29,19 @@ app.get('/confessions', async (req, res) => {
 app.get('/confessions/new', (req, res) => {
     res.render('confessions/new');
 });
+
+app.post('/confessions', async (req, res) => {
+    const confession = new Confession({
+        postTitle: req.body.confy.postTitle,
+        postConfession: req.body.confy.postConfession,
+        postHash:`AC-${formattedDate}-72945`,
+        user:`confy${randomNumbersString}`  ,
+        category:'general'  
+    });
+    
+    await confession.save();
+    res.redirect(`/confessions/${confession._id}`)
+})
 
 
 app.get('/confessions/:id', async (req, res) => {
@@ -52,3 +66,30 @@ app.put('/confessions/:id', async (req, res) => {
 app.listen(3000, ()=>{
     console.log("APP IS LISTENING ON PORT 3000!");
 });
+
+
+//Generate Current Date
+function getCurrentDateAsString() {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear().toString().slice(-2); // Last two digits of the year
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Month is zero-based
+    const day = currentDate.getDate().toString().padStart(2, '0');
+    
+    return `${day}${month}${year}`;
+}
+
+const formattedDate = getCurrentDateAsString();
+
+
+//Generate Random 10 Numbers
+function generateRandomNumbersAsString() {
+    let randomNumbersString = '';
+    for (let i = 0; i < 10; i++) {
+        const randomNumber = Math.floor(Math.random() * 10); // Generates a single-digit random number
+        randomNumbersString += randomNumber;
+    }
+    return randomNumbersString;
+}
+
+const randomNumbersString = generateRandomNumbersAsString();
+console.log(randomNumbersString);
