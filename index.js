@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Confession = require('./models/confession');
 const methodOverride = require('method-override');
+const ejsMate = require('ejs-mate');
 
 main().catch(err => console.log(err));
 
@@ -17,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
-
+app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine','ejs');
 

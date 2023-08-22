@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Confession</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %>
     <h1>Edit Confession Page</h1>
     <form action="/confessions/<%=confession._id%>?_method=PUT" method="POST">
         <div>
@@ -19,5 +12,3 @@
         <button>Update Confession</button>
     </form>
     <a href="/confessions/<%=confession._id%>">Back</a>
-</body>
-</html>
